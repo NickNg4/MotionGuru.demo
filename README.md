@@ -27,7 +27,7 @@ Raw broadcast video
   → Phase 1b: Multi-fighter pose extraction with persistent identity tracking
   → Phase 2:  Biomechanical feature engineering (57 frame-level features)
   → Phase 3a: Temporal action classification (per-frame, per-fighter)
-  → Phase 3b: Multi-dimensional fighter profiling (93 behavioral metrics)
+  → Phase 3b: Multi-dimensional fighter profiling (107 behavioral metrics)
   → Phase 3c: Evidence-based strategy generation with counter-technique mapping
 ```
 
@@ -207,5 +207,5 @@ The strategy layer maps profiled fighter weaknesses to specific, actionable coun
 - **Phase 1 (Pose Extraction):** Production-ready with robust multi-fighter tracking
 - **Phase 2 (Feature Engineering):** Complete — 57-feature output with data quality tracking  
 - **Phase 3a (Action Detection):** Active development — model training and active-learning labeling cycle in progress
-- **Phase 3b (Fighter Profiling):** Implemented — 93 metrics across 15 dimensions with cross-fight aggregation
+- **Phase 3b (Fighter Profiling):** Implemented — 107 metrics across 15 dimensions with cross-fight aggregation
 - **Phase 3c (Strategy Engine):** Implemented — threshold-based scouting reports with tactical game plans
