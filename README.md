@@ -2,12 +2,22 @@
 
 ## Overview
 
-MotionGuru is a fully automated sports analytics system that transforms raw, unstructured broadcast boxing footage into structured fighter dossiers containing exploitable behavioral patterns, biomechanical tendencies, and rule-based tactical game plans. Built entirely in Python as a modular, multi-phase pipeline, the system operates without any manual intervention between input (a YouTube link or video file) and output (a complete scouting report with actionable counter-strategies).
+MotionGuru is a fully automated sports analytics system that transforms raw, unstructured broadcast boxing footage into structured fighter dossiers containing exploitable behavioral patterns, biomechanical tendencies, and rule-based tactical game plans. Built entirely in Python as a modular, multi-phase pipeline, the system operates without any manual intervention between input (a video file) and output (a complete scouting report with actionable counter-strategies).
 
 The project demonstrates end-to-end ownership of the full machine learning lifecycle: from raw data acquisition and computer vision preprocessing, through custom model architecture design and active-learning annotation, to deterministic profiling and evidence-based strategic reasoning.
 
 ---
 
+## Why This Matters — Superhuman Analysis
+
+Traditional fight analysis relies on a human coach watching footage and forming subjective impressions. MotionGuru operates on a fundamentally different plane:
+
+- **Sees what human eyes cannot.** The system detects sub-300ms preparatory tells — involuntary micro-movements like a lead-foot lift before an attack, or a rear elbow dipping toward the hip before a cross — that are invisible at real-time playback speed. These biomechanical "telegraphs" create exploitable counter-timing windows that no human coach could consistently identify from broadcast footage.
+- **Quantifies degradation over time.** Instead of a coach's subjective sense that a fighter "looked tired in the later rounds," MotionGuru computes precise round-over-round decay slopes: guard height dropping X% per round, punch return paths looping wider, combination lengths shortening, flat-footed percentage increasing. These trajectories turn fatigue from a vague observation into a predictive signal — projecting *when* a fighter's structure will collapse and which specific vulnerabilities will open.
+- **Exploits rhythm and timing patterns.** The system maps inter-punch intervals, between-combo latencies, and round pacing distributions at millisecond resolution. A metronomic rhythm (low variance in timing) is an exploitable pattern; MotionGuru identifies it quantitatively and maps it to specific counter-timing strategies.
+- **Predicts future behavior from structural signatures.** By cross-referencing 107 behavioral metrics across 15 dimensions, the system identifies compound vulnerability patterns — e.g., a fighter who retreats in straight lines, drops their guard after punching, AND has a declining reaction time slope is not just individually exploitable on each axis, but catastrophically vulnerable to a specific combined pressure strategy. The profiler surfaces these intersections that no single human observation could assemble.
+
+---
 
 ## Pipeline Architecture
 
@@ -62,7 +72,6 @@ Built with **React 19, TypeScript, and Vite**, leveraging **Zustand** for global
 | **Databases** | PostgreSQL 15, TimescaleDB, Redis, MinIO / S3 |
 | **Computer Vision** | YOLOv8, YOLOv8-Pose, OSNet (ReID), EasyOCR, OpenCV |
 | **Deep Learning** | PyTorch (custom TCN + Temporal Attention architecture) |
-| **Testing** | Pytest (200+ tests), Vitest (120+ tests), Playwright |
 | **DevOps / Infra** | Docker, Terraform, GitHub Actions |
 
 ---
@@ -142,7 +151,7 @@ Features are z-score normalized per video, with the validity channel excluded fr
 
 ## Phase 3b — Multi-Dimensional Fighter Profiling
 
-A deterministic profiling engine that computes **93 behavioral and biomechanical metrics** per fighter per round, organized across **15 analytical dimensions**:
+A deterministic profiling engine that computes **107 behavioral and biomechanical metrics** per fighter per round, organized across **15 analytical dimensions**:
 
 | # | Dimension | Category | Example Metrics |
 |---|---|---|---|
@@ -177,8 +186,21 @@ The strategy layer maps profiled fighter weaknesses to specific, actionable coun
 - **Game plan generation:** Critical and high-priority findings are compiled into a prioritized tactical game plan with concrete training recommendations
 - **Confidence-aware reporting:** Reports from insufficient data are flagged and game plan sections include reliability warnings
 
+
 ---
 
+## Planned Features
+
+- **Automated Habit Clip Extraction:** Automatically identify and extract short video clips showcasing a fighter's top N best and worst habits — for both your own athlete and the scouted opponent. Each clip will be annotated with on-screen commentary explaining the detected pattern, why it matters tactically, and the specific counter-strategy or correction recommended. This transforms the raw scouting report from a data table into a visual coaching tool: a coach can review a fighter's "Top 5 Exploitable Habits" reel before a bout, or show an athlete their own "Top 5 Habits to Fix" with frame-by-frame evidence.
+- **Granular action sub-classification (Phase 3b TCN):** Expand from 3 classes to 12+ (jab, cross, hook, uppercut, body shot, block, slip, duck, parry, clinch), unlocking ~40% of currently dormant profiler metrics including combination predictability scoring.
+- **Multi-sport scalability roadmap:** The core architecture (pose → features → profiler → strategy) is sport-agnostic by design. The scaling path:
+  1. **Boxing** (current) — proof of concept with the deepest domain model.
+  2. **All combat sports** — MMA, kickboxing, Muay Thai, wrestling. Same skeleton tracking; swap the feature set and strategy library per discipline.
+  3. **Individual sports** — Tennis (stroke mechanics, court positioning), fencing (blade work, footwork tells), golf (swing kinematics). One-vs-one or solo athlete analysis using the same profiler-to-strategy pipeline.
+  4. **All broadcast sports** — Any sport where biomechanical patterns drive tactical advantage. The modular pipeline means each new sport requires only a new feature layer and strategy library, not a new system.
+- **Predictive modeling layer:** Use accumulated cross-fight profiler data to build predictive models for fight outcome probability, round-by-round scoring projections, and optimal strategy selection based on opponent profile similarity matching.
+
+---
 
 ## Status
 
