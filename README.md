@@ -2,9 +2,17 @@
 
 ## Overview
 
-MotionGuru is a fully automated sports analytics system that transforms raw, unstructured broadcast boxing footage into structured fighter dossiers containing exploitable behavioral patterns, biomechanical tendencies, and rule-based tactical game plans. Built entirely in Python as a modular, multi-phase pipeline, the system operates without any manual intervention between input (a video file) and output (a complete scouting report with actionable counter-strategies).
+MotionGuru is a fully automated sports analytics system that transforms raw, unstructured broadcast boxing footage into structured fighter dossiers containing exploitable behavioral patterns, biomechanical tendencies, and rule-based tactical game plans. Built entirely in Python as a modular, multi-phase pipeline, the system operates without any manual intervention between input (a YouTube link or video file) and output (a complete scouting report with actionable counter-strategies).
 
 The project demonstrates end-to-end ownership of the full machine learning lifecycle: from raw data acquisition and computer vision preprocessing, through custom model architecture design and active-learning annotation, to deterministic profiling and evidence-based strategic reasoning.
+
+---
+
+## Demo
+
+Watch the full pipeline in action — from raw broadcast footage to structured scouting report:
+
+**[MotionGuru Demo Video](https://www.youtube.com/watch?v=K5-CoHNZcow)**
 
 ---
 
@@ -33,58 +41,6 @@ Raw broadcast video
 
 ---
 
-
-## Full-Stack Application Architecture
-
-The machine learning pipeline is wrapped in a production-ready, cloud-native web application, transforming the raw analysis engine into an interactive coaching dashboard.
-
-### Frontend Application
-Built with **React 19, TypeScript, and Vite**, leveraging **Zustand** for global state and **TanStack Query** for robust server-state synchronization. The interface is styled with **Tailwind CSS** and is broken down into purpose-built feature modules:
-
-- **Authentication & Security (`auth`):** Secure, token-based authentication flow for user and role management.
-- **Coaching Dashboard (`dashboard`):** A centralized command center surfacing recent analytics, high-priority strategic alerts, and aggregated fighter progression metrics.
-- **Video Management (`videos`):** Interface for uploading 4K broadcast footage directly to S3/MinIO, managing video libraries, and triggering the asynchronous ML extraction pipeline.
-- **Roster Management (`athletes` & `opponents`):** Distinct tracking systems for internal athletes verses scouted opponents, resolving identities across multiple bouts to aggregate career-long behavioral profiles.
-- **Analysis View (`analysis`):** The core interactive tool for reviewing ML outputs. Features timeline-synced video playback overlaid with biomechanical extraction data and frame-accurate event tagging.
-- **Tactical Reports (`reports`):** Consumer-facing presentation of the Phase 3c Strategy Engine. Displays the prioritized tactical game plans, specific counter-strategies, and generated behavioral summaries.
-- **Testing:** Extensively tested with 120+ unit/integration tests via Vitest and React Testing Library, plus end-to-end validation using Playwright.
-
-### Backend Services & Asynchronous Processing
-- **RESTful API:** Powered by FastAPI (Python 3.11+) and SQLAlchemy, providing a high-performance asynchronous interface connecting the frontend to the ML engine.
-- **Distributed Task Queue:** Heavy computer vision and ML profiling tasks are offloaded to Celery workers using Redis as the message broker, preventing the API from blocking during gigabyte-scale video processing.
-- **Data Persistence:** 
-  - **PostgreSQL + TimescaleDB** handle complex time-series telemetry data (18 keypoints × 57 features × thousands of frames per round).
-  - **MinIO (S3-Compatible)** provides scalable object storage for raw 4K broadcast footage, segmented round clips, and annotated video outputs.
-
-### Infrastructure & DevOps
-- **Containerization:** Fully dockerized services orchestrated via Docker Compose for a seamless local development environment.
-- **Infrastructure as Code (IaC):** Production environments are provisioned declaratively using Terraform, ensuring reproducible cloud deployments.
-- **CI/CD:** Automated GitHub Actions workflows enforce code quality and run the 325+ combined test suite securely on every commit.
-
----
-
-## Technology Stack
-
-| Layer | Technologies |
-|---|---|
-| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS, Zustand, TanStack Query |
-| **Backend API** | FastAPI, Python 3.11+, SQLAlchemy, Celery |
-| **Databases** | PostgreSQL 15, TimescaleDB, Redis, MinIO / S3 |
-| **Computer Vision** | YOLOv8, YOLOv8-Pose, OSNet (ReID), EasyOCR, OpenCV |
-| **Deep Learning** | PyTorch (custom TCN + Temporal Attention architecture) |
-| **DevOps / Infra** | Docker, Terraform, GitHub Actions |
-
----
-
-## Technical Highlights
-
-- **No LLM dependency for analysis:** All profiling and strategy generation is purely deterministic Python computation, ensuring reproducibility and auditability. LLMs are optionally available only for prose formatting of final reports.
-- **Domain-driven feature engineering:** 57 hand-crafted features encode boxing-specific biomechanical knowledge (kinetic chain mechanics, guard theory, pressure/retreat dynamics) rather than relying on generic learned representations.
-- **Graceful degradation:** The system explicitly tracks what it can and cannot measure from 2D broadcast footage. Metrics requiring 3D depth data or granular action sub-types are marked as unavailable rather than silently approximated.
-- **Production-hardened:** Comprehensive audit and bug-fix pass covering signal integrity, loss function mathematics, augmentation correctness, and metric computation accuracy across all pipeline stages.
-
----
-
 ## Phase 1 — Video Preprocessing & Pose Extraction
 
 ### Round Segmentation
@@ -93,7 +49,7 @@ Built with **React 19, TypeScript, and Vite**, leveraging **Zustand** for global
 - Handles rest periods, stoppages, and replay segments
 
 ### Pose Extraction & Identity Tracking
-- **Object Detection:** YOLOv8 for person detection and 17-keypoint pose estimation, plus one synthetic landmark for anatomical completeness (18 total keypoints per fighter per frame)
+- **Object Detection:** YOLO11m-pose for unified person detection and 17-keypoint pose estimation (with YOLOv8 fallback), plus one synthetic landmark for anatomical completeness (18 total keypoints per fighter per frame)
 - **Re-Identification:** Deep ReID (OSNet) embeddings maintain consistent fighter identity across camera cuts, zoom changes, and occlusions
 - **Identity Reconciliation:** A Viterbi dynamic programming pass post-processes the identity assignments to resolve transient swaps caused by fighters crossing paths or clinching
 - **Signal Filtering:** Per-keypoint adaptive filtering with motion-aware parameters ensures fast limb movements (punches) are preserved while stable landmarks (hips, shoulders) are smoothed for noise reduction
@@ -136,7 +92,7 @@ Features are z-score normalized per video, with the validity channel excluded fr
 
 ### Training Pipeline
 - Custom focal loss with label smoothing, addressing severe class imbalance (~85% idle frames)
-- AdamW optimizer with cosine annealing warm restarts
+- AdamW optimizer with cosine annealing learning rate schedule
 - Skip and clinch zones excluded from loss computation via ignore masking, preventing corrupted tracking periods from polluting the training signal
 
 ### Active-Learning Annotation System
@@ -186,6 +142,57 @@ The strategy layer maps profiled fighter weaknesses to specific, actionable coun
 - **Game plan generation:** Critical and high-priority findings are compiled into a prioritized tactical game plan with concrete training recommendations
 - **Confidence-aware reporting:** Reports from insufficient data are flagged and game plan sections include reliability warnings
 
+---
+
+## Technical Highlights
+
+- **No LLM dependency for analysis:** All profiling and strategy generation is purely deterministic Python computation, ensuring reproducibility and auditability. LLMs are optionally available only for prose formatting of final reports.
+- **Domain-driven feature engineering:** 57 hand-crafted features encode boxing-specific biomechanical knowledge (kinetic chain mechanics, guard theory, pressure/retreat dynamics) rather than relying on generic learned representations.
+- **Graceful degradation:** The system explicitly tracks what it can and cannot measure from 2D broadcast footage. Metrics requiring 3D depth data or granular action sub-types are marked as unavailable rather than silently approximated.
+- **Production-hardened:** Comprehensive audit and bug-fix pass covering signal integrity, loss function mathematics, augmentation correctness, and metric computation accuracy across all pipeline stages.
+
+---
+
+## Full-Stack Application Architecture
+
+The machine learning pipeline is wrapped in a production-ready, cloud-native web application, transforming the raw analysis engine into an interactive coaching dashboard.
+
+### Frontend Application
+Built with **React 19, TypeScript, and Vite**, leveraging **Zustand** for global state and **TanStack Query** for robust server-state synchronization. The interface is styled with **Tailwind CSS** and is broken down into purpose-built feature modules:
+
+- **Authentication & Security (`auth`):** Secure, token-based authentication flow for user and role management.
+- **Coaching Dashboard (`dashboard`):** A centralized command center surfacing recent analytics, high-priority strategic alerts, and aggregated fighter progression metrics.
+- **Video Management (`videos`):** Interface for uploading 4K broadcast footage directly to S3/MinIO, managing video libraries, and triggering the asynchronous ML extraction pipeline.
+- **Roster Management (`athletes` & `opponents`):** Distinct tracking systems for internal athletes verses scouted opponents, resolving identities across multiple bouts to aggregate career-long behavioral profiles.
+- **Analysis View (`analysis`):** The core interactive tool for reviewing ML outputs. Features timeline-synced video playback overlaid with biomechanical extraction data and frame-accurate event tagging.
+- **Tactical Reports (`reports`):** Consumer-facing presentation of the Phase 3c Strategy Engine. Displays the prioritized tactical game plans, specific counter-strategies, and generated behavioral summaries.
+- **Testing:** Extensively tested with 120+ unit/integration tests via Vitest and React Testing Library, plus end-to-end validation using Playwright.
+
+### Backend Services & Asynchronous Processing
+- **RESTful API:** Powered by FastAPI (Python 3.11+) and SQLAlchemy, providing a high-performance asynchronous interface connecting the frontend to the ML engine.
+- **Distributed Task Queue:** Heavy computer vision and ML profiling tasks are offloaded to Celery workers using Redis as the message broker, preventing the API from blocking during gigabyte-scale video processing.
+- **Data Persistence:** 
+  - **PostgreSQL + TimescaleDB** handle complex time-series telemetry data (18 keypoints × 57 features × thousands of frames per round).
+  - **MinIO (S3-Compatible)** provides scalable object storage for raw 4K broadcast footage, segmented round clips, and annotated video outputs.
+
+### Infrastructure & DevOps
+- **Containerization:** Fully dockerized services orchestrated via Docker Compose for a seamless local development environment.
+- **Infrastructure as Code (IaC):** Production environments are provisioned declaratively using Terraform, ensuring reproducible cloud deployments.
+- **CI/CD:** Automated GitHub Actions workflows enforce code quality and run the 325+ combined test suite securely on every commit.
+
+---
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS, Zustand, TanStack Query |
+| **Backend API** | FastAPI, Python 3.11+, SQLAlchemy, Celery |
+| **Databases** | PostgreSQL 15, TimescaleDB, Redis, MinIO / S3 |
+| **Computer Vision** | YOLO11m-Pose (YOLOv8 fallback), OSNet (ReID), EasyOCR, OpenCV |
+| **Deep Learning** | PyTorch (custom TCN + Temporal Attention architecture) |
+| **Testing** | Pytest (200+ tests), Vitest (120+ tests), Playwright |
+| **DevOps / Infra** | Docker, Terraform, GitHub Actions |
 
 ---
 
