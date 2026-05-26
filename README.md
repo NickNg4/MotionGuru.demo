@@ -216,3 +216,8 @@ Built with **React 19, TypeScript, and Vite**, leveraging **Zustand** for global
 - **Phase 3a (Action Detection):** Active development — model training and active-learning labeling cycle in progress
 - **Phase 3b (Fighter Profiling):** Implemented — 107 metrics across 15 dimensions with cross-fight aggregation
 - **Phase 3c (Strategy Engine):** Implemented — threshold-based scouting reports with tactical game plans
+
+---
+## Contributor
+- Hieu (Nick) Nguyen
+- Vinh Ngo Gia
