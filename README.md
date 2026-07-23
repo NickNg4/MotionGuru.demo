@@ -12,7 +12,7 @@ The project demonstrates end-to-end ownership of the full machine learning lifec
 
 Watch the full pipeline in action — from raw broadcast footage to structured scouting report:
 
-**[MotionGuru Demo Video](https://www.youtube.com/watch?v=K5-CoHNZcow)**
+**[MotionGuru Demo Video](https://www.youtube.com/watch?v=XsJhzF4LUEw)**
 
 ---
 
