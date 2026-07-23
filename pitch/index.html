@@ -17,10 +17,47 @@
   <div id="slide-counter"></div>
   <div id="progress-bar"></div>
 
+  <!-- ========== SLIDE 0: INTERNAL NOTES — DISABLED (not shown in presentation) ==========
+       This slide is HIDDEN: class is "slide-disabled" (not "slide") + display:none, so the
+       deck JS (which selects ".slide") skips it — no nav dot, no counter slot, no animation.
+       To SHOW it in the presentation:
+         1. rename class  slide-disabled  ->  slide
+         2. delete the   style="display:none"
+       ========================================================================================= -->
+  <section class="slide-disabled" data-theme="dark" style="display:none">
+    <div class="slide-content">
+      <h2 class="section-label">Internal Notes — not for presentation</h2>
+      <h3 class="slide-heading">Outstanding deck TODOs</h3>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="list-todo"></i></div>
+          <div>
+            <h4>① Add a results / proof slide</h4>
+            <p>Insert a TCN performance slide — <strong>macro-F1 + per-class precision/recall</strong> from the latest <code>/evaluate</code> run. Use the REAL number, no placeholder. The deck currently claims capability but shows zero model performance — the one thing a technical evaluator will miss.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="flask-conical"></i></div>
+          <div>
+            <h4>② Slide 8 demo figures are synthetic</h4>
+            <p>340ms / −62% / 280ms / 15% on "From Data to Game Plan" are <strong>illustrative, not real output</strong>. Fine as a mockup — swap for real profiler output if it will be scrutinised.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="check-circle-2"></i></div>
+          <div>
+            <h4>Resolved this pass</h4>
+            <p>Fighter slide → 14 fighters / 7 weight classes (Pacquiao added) · Slide 9 beta → hips=0.3 · Contact → Nick Nguyen · GitHub URL confirmed correct.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== SLIDE 1: TITLE ========== -->
   <section class="slide slide-title" data-theme="dark">
     <div class="slide-content center-content">
-      <div class="logo-mark"><i data-lucide="brain-cog"></i></div>
+      <div class="logo-mark"><img src="logo.png" alt="MotionGuru logo"></div>
       <h1 class="hero-title">Motion<span class="accent">Guru</span></h1>
       <p class="hero-subtitle">Superhuman Motion Analysis</p>
       <div class="divider"></div>
@@ -60,22 +97,22 @@
         <div class="problem-card">
           <div class="problem-icon"><i data-lucide="users"></i></div>
           <h4>Volatile</h4>
-          <p>Coaches watch footage and form <em>opinions and impressions</em>. Two coaches, same fight, different conclusions.</p>
+          <p>Two coaches, same fight, <strong>different conclusions</strong></p>
         </div>
         <div class="problem-card">
           <div class="problem-icon"><i data-lucide="clock"></i></div>
           <h4>Slow</h4>
-          <p>Hours of manual video review per opponent. A 12-round fight takes exponentially more time to scout properly and as thoroughly.</p>
+          <p>12-round fight = <strong>days</strong> of manual review</p>
         </div>
         <div class="problem-card">
           <div class="problem-icon"><i data-lucide="alert-triangle"></i></div>
           <h4>Incomplete</h4>
-          <p>Human eyes miss sub-300ms biomechanical tells, fatigue decay slopes, and compound vulnerability patterns.</p>
+          <p>Sub-300ms tells, fatigue slopes, compound patterns — <strong>invisible to humans</strong></p>
         </div>
         <div class="problem-card">
           <div class="problem-icon"><i data-lucide="file-x"></i></div>
           <h4>Unstructured</h4>
-          <p>Insights live in notebooks and verbal briefings. No data persistence, no consistent cross-fight trending.</p>
+          <p>No persistence, no schema, <strong>no cross-fight trending</strong></p>
         </div>
       </div>
     </div>
@@ -145,19 +182,19 @@
       <div class="edge-grid fade-up">
         <div class="edge-card">
           <h4><i data-lucide="scan"></i> Preparatory Tells</h4>
-          <p>Detects involuntary micro-movements — a lead-foot lift, an elbow flare, a shoulder dip — <strong>sub-300ms before the attack begins</strong>. Invisible at real-time speed.</p>
+          <p>Involuntary micro-movements detected <strong>sub-300ms</strong> before any action</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="trending-down"></i> Fatigue Prediction</h4>
-          <p>Computes precise <strong>round-over-round decay slopes</strong>: guard height, punch return paths, combo lengths, flat-footed %. Projects <em>when</em> a fighter's structure will collapse.</p>
+          <p>Round-over-round <strong>decay slopes</strong> — projects when structure collapses</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="timer"></i> Rhythm Exploitation</h4>
-          <p>Maps inter-punch intervals at <strong>millisecond resolution</strong>. A metronomic rhythm is an exploitable pattern — the system finds it and maps the counter.</p>
+          <p>Inter-punch timing at <strong>millisecond resolution</strong> — metronomic = exploitable</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="share-2"></i> Compound Vulnerabilities</h4>
-          <p>Cross-references 107 metrics to find <strong>intersecting weaknesses</strong> — e.g., straight retreats + guard drops + declining reaction time = catastrophic pressure vulnerability.</p>
+          <p><strong>107 metrics cross-referenced</strong> — intersecting weaknesses = catastrophic exploits</p>
         </div>
       </div>
       <p class="dim-note fade-up delay-1" style="margin-top:24px">And more — every dimension the system profiles is a potential edge no human analyst could compute in real time.</p>
@@ -206,25 +243,25 @@
       <div class="gameplan-demo fade-up">
         <div class="gp-finding">
           <span class="gp-badge critical">FINDING 1</span>
-          <p><strong>Guard drops &gt;15% after every combination</strong> — recovery takes 340ms on average</p>
+          <p><strong>Guard drops &gt;15% post-combo</strong> — 340ms recovery window</p>
         </div>
         <div class="gp-finding" style="border-color: rgba(251,191,36,0.3)">
           <span class="gp-badge" style="background:rgba(251,191,36,0.15);color:#fbbf24">FINDING 2</span>
-          <p><strong>Retreats in straight lines under pressure</strong> — lateral movement drops 62% after Round 6</p>
+          <p><strong>Straight-line retreat under pressure</strong> — lateral movement −62% after Rd 6</p>
         </div>
         <div class="gp-finding" style="border-color: rgba(168,85,247,0.3)">
           <span class="gp-badge" style="background:rgba(168,85,247,0.15);color:#a855f7">FINDING 3</span>
-          <p><strong>Elbow flare detected 280ms before every cross</strong> — a telegraphed preparatory tell</p>
+          <p><strong>Elbow flare 280ms before cross</strong> — telegraphed preparatory tell</p>
         </div>
         <div class="gp-arrow">↓ compound strategy</div>
         <div class="gp-strategy">
-          <h4>Auto-Generated Game Plan: Pressure Trap</h4>
-          <p class="gp-technique"><strong>Round 7+:</strong> Bait the cross (you'll see the elbow flare 280ms early). Slip inside, let the combo finish — his guard is now at its lowest and he can only retreat straight back. Cut the ring, close distance, fire your counter before his 340ms recovery window closes.</p>
-          <p class="gp-reasoning"><strong>Why it works:</strong> Three independent weaknesses converge into a single high-percentage window. No human analyst cross-references this many variables in real time.</p>
+          <h4>Auto-Generated: Pressure Trap</h4>
+          <p class="gp-technique"><strong>Round 7+:</strong> Read the tell → slip → let combo finish → cut ring → counter inside 340ms window</p>
+          <p class="gp-reasoning"><strong>Why:</strong> 3 independent weaknesses converge into one high-% exploit window</p>
           <div class="gp-tags">
-            <span class="gp-tag">Confidence: 3 corroborating metrics</span>
-            <span class="gp-tag">Window: Late rounds (fatigue-amplified)</span>
-            <span class="gp-tag">Drill: Slip-counter + ring-cutting footwork</span>
+            <span class="gp-tag">3 corroborating metrics</span>
+            <span class="gp-tag">Late rounds (fatigue-amplified)</span>
+            <span class="gp-tag">Drill: Slip-counter + ring-cutting</span>
           </div>
         </div>
       </div>
@@ -239,19 +276,19 @@
       <div class="edge-grid fade-up">
         <div class="edge-card">
           <h4><i data-lucide="scan-text"></i> OCR Timer Detection</h4>
-          <p>Automatically locates and reads the broadcast round timer using <strong>EasyOCR</strong>. Detects round start/end boundaries without any manual input — works across networks (ESPN, DAZN, Sky Sports).</p>
+          <p><strong>EasyOCR</strong> reads broadcast timer → auto-detects round boundaries across networks</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="scissors"></i> Intelligent Segmentation</h4>
-          <p>Identifies and discards <strong>replays, walk-outs, and between-round breaks</strong> by detecting scene transitions and timer absence. Only live-action frames enter the pipeline.</p>
+          <p>Strips replays, walk-outs, rest periods — <strong>only live action enters pipeline</strong></p>
         </div>
         <div class="edge-card">
-          <h4><i data-lucide="hard-drive"></i> Lossless Round Extraction</h4>
-          <p>FFmpeg extracts each round as a separate video with <strong>zero re-encoding</strong> — preserving original resolution and bitrate. Metadata (round number, timestamps, FPS) logged to JSON.</p>
+          <h4><i data-lucide="hard-drive"></i> Lossless Extraction</h4>
+          <p>FFmpeg stream-copy — <strong>zero re-encoding</strong>, original resolution preserved</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="check-square"></i> Quality Validation</h4>
-          <p>Pre-flight checks verify resolution, frame rate consistency, and codec compatibility before the pipeline commits to processing. <strong>Fail-fast on corrupt or unsupported inputs.</strong></p>
+          <p>Resolution, FPS, codec checks — <strong>fail-fast</strong> on corrupt inputs</p>
         </div>
       </div>
       <p class="dim-note fade-up delay-1">This stage is optional — the pipeline can also accept pre-segmented round clips directly.</p>
@@ -266,19 +303,19 @@
       <div class="edge-grid fade-up">
         <div class="edge-card">
           <h4><i data-lucide="crosshair"></i> Smart Calibration</h4>
-          <p>2-phase system: fast 45s scan scores frames for quality (separation, bbox size, sharpness), then selects top-20 frames to build primary fighter templates. <strong>Close-up templates</strong> enriched separately at 30% blend weight.</p>
+          <p>45s scan → top-20 frames → <strong>fighter identity templates</strong> + close-up enrichment</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="link-2"></i> Similarity Scoring</h4>
-          <p>Multi-signal identity: <strong>OSNet cosine + guard stance bonus + referee pose penalty × lateral zone confidence + shorts color + position bonus</strong>. Hungarian assignment for globally optimal pairing.</p>
+          <p><strong>OSNet + guard bonus + pose penalty + zone + color</strong> → Hungarian optimal pairing</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="shield"></i> Intersection-Aware</h4>
-          <p>When fighters clinch (bboxes within 12% of frame width): anchor threshold raised to 0.92, home zone EMA suppressed, Kalman recovery disabled. <strong>Prevents identity swaps during close-range exchanges.</strong></p>
+          <p>Clinch detected → anchor threshold <strong>↑0.92</strong>, Kalman disabled — prevents ID swaps</p>
         </div>
         <div class="edge-card">
           <h4><i data-lucide="activity"></i> 1-Euro Smoothing</h4>
-          <p>Adaptive per-keypoint filtering with kinematic-group betas: <strong>wrists=1.5</strong> (fast punches), elbows=1.0, head=0.6, <strong>shoulders/hips=0.3</strong> (stable posture). NaN-safe; resets on camera cuts.</p>
+          <p>Kinematic betas: <strong>wrists=1.5</strong> (fast), hips=0.3 (stable) — NaN-safe, camera-cut reset</p>
         </div>
       </div>
     </div>
@@ -290,35 +327,35 @@
       <h2 class="section-label">Phase 2</h2>
       <h3 class="slide-heading">57 biomechanical features <span class="accent">per frame</span></h3>
       <div class="problem-grid fade-up">
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="zap"></i></div>
           <h4>Speed & Power</h4>
-          <p>Wrist velocity, wrist acceleration, elbow extension rate — the kinematic signature of each punch.</p>
+          <p>Wrist velocity · acceleration · elbow extension rate</p>
         </div>
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="umbrella"></i></div>
           <h4>Guard & Defense</h4>
-          <p>Guard openness (L/R/combined), wrist-to-nose distance, elbow tuck angle — defensive posture decoded.</p>
+          <p>Guard openness (L/R) · wrist-to-nose · elbow tuck angle</p>
         </div>
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="rotate-cw"></i></div>
           <h4>Body Mechanics</h4>
-          <p>Shoulder rotation, hip rotation, torso lean angle, rotational velocities — the kinetic chain in numbers.</p>
+          <p>Shoulder · hip rotation · torso lean · kinetic chain velocities</p>
         </div>
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="move"></i></div>
           <h4>Footwork</h4>
-          <p>Stance width, COM velocity, weight distribution — the foundation beneath every punch.</p>
+          <p>Stance width · COM velocity · weight distribution</p>
         </div>
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="git-merge"></i></div>
           <h4>Cross-Fighter</h4>
-          <p>Shoulder distance, closing/separating rate, wrist-to-chin proximity — two fighters as one system.</p>
+          <p>Shoulder distance · closing rate · wrist-to-chin proximity</p>
         </div>
-        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+        <div class="problem-card" style="border-color: rgba(31,221,135,0.2)">
           <div class="problem-icon"><i data-lucide="check-circle"></i></div>
           <h4>Data Quality</h4>
-          <p>Binary valid_frame indicator (never z-scored). Forward-fill for ≤3 frame gaps. NaN propagation for longer drops.</p>
+          <p>Valid-frame flag · forward-fill ≤3 frames · NaN propagation</p>
         </div>
       </div>
     </div>
@@ -328,24 +365,23 @@
   <section class="slide" data-theme="dark">
     <div class="slide-content">
       <h2 class="section-label">Dataset</h2>
-      <h3 class="slide-heading">14 elite fighters <span class="accent">profiled and validated</span></h3>
-      <div class="pipeline fade-up" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+      <h3 class="slide-heading">14 elite fighters across <span class="accent">7 weight classes</span></h3>
+      <div class="pipeline fade-up" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;">
         <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">1</div><h4>Canelo Álvarez</h4><p>Counter-puncher · Super Middle</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">2</div><h4>GGG</h4><p>Pressure fighter · Middleweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">3</div><h4>Tyson Fury</h4><p>Switch-hitter · Heavyweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">4</div><h4>Oleksandr Usyk</h4><p>Technician · Heavyweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">5</div><h4>Anthony Joshua</h4><p>Power puncher · Heavyweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">6</div><h4>Naoya Inoue</h4><p>Explosive finisher · Super Bantam</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">7</div><h4>Crawford</h4><p>Switch-hitter · Welterweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">8</div><h4>Dmitry Bivol</h4><p>Tactician · Light Heavy</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">9</div><h4>Jermell Charlo</h4><p>Counter-puncher · Super Middle</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">10</div><h4>Benavidez</h4><p>Volume puncher · Light Heavy</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">11</div><h4>Beterbiev</h4><p>Power pressure · Light Heavy</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">12</div><h4>Devin Haney</h4><p>Boxing technician · Super Light</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">13</div><h4>Shakur</h4><p>Defensive master · Lightweight</p></div>
-        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">14</div><h4>Tank Davis</h4><p>KO artist · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">2</div><h4>Floyd Mayweather</h4><p>Defensive genius · Welterweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">3</div><h4>Tyson Fury</h4><p>Unorthodox giant · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">4</div><h4>Naoya Inoue</h4><p>Explosive finisher · Super Bantam</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">5</div><h4>Vasyl Lomachenko</h4><p>Footwork savant · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">6</div><h4>Anthony Joshua</h4><p>Power puncher · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">7</div><h4>Oleksandr Usyk</h4><p>Technician · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">8</div><h4>Mikey Garcia</h4><p>Fundamentalist · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">9</div><h4>GGG</h4><p>Pressure fighter · Middleweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">10</div><h4>Nonito Donaire</h4><p>Flash KO power · Bantamweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">11</div><h4>Jorge Linares</h4><p>Elegant boxer · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">12</div><h4>Joseph Parker</h4><p>Volume combination · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">13</div><h4>Robert Easter Jr</h4><p>Rangy jab-heavy · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">14</div><h4>Manny Pacquiao</h4><p>Southpaw volume · Welterweight</p></div>
       </div>
-      <p class="dim-note fade-up delay-1" style="margin-top:24px">Multi-fight merging aggregates patterns across bouts — each processed fight makes the profile more reliable.</p>
     </div>
   </section>
 
@@ -359,28 +395,28 @@
           <div class="feature-icon"><i data-lucide="eye-off"></i></div>
           <div>
             <h4>Fighter Occlusion</h4>
-            <p>Clinches, referee blocking, and camera angles cause complete loss of visibility. Solved with <strong>Kalman filter prediction</strong> and intersection-aware tracking that raises identity thresholds during close-range exchanges.</p>
+            <p><strong>Kalman prediction</strong> + intersection-aware tracking through clinches and referee blocks</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="shuffle"></i></div>
           <div>
             <h4>Identity Tracking</h4>
-            <p>Broadcast cuts, replays, and similar-looking fighters cause ID swaps. <strong>OSNet-x1.0 ReID + multi-template calibration + Hungarian assignment + jump guard</strong> maintains identity across the full video.</p>
+            <p><strong>OSNet ReID</strong> + multi-template calibration + Hungarian assignment + jump guard</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="layers"></i></div>
           <div>
             <h4>2D → 3D Inference</h4>
-            <p>Single-camera 2D poses must approximate 3D biomechanics. <strong>Confidence tagging</strong> (direct / proxy_2d / requires_3d) flags every metric so downstream analysis knows what to trust.</p>
+            <p>Confidence tagging: <strong>direct / proxy_2d / requires_3d</strong> — system knows what to trust</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="scale"></i></div>
           <div>
             <h4>Class Imbalance</h4>
-            <p>Fighters spend ~85% of rounds idle. <strong>FocalLoss (γ=2.0) with class weights clamped ≤10</strong>, GroupNorm, and careful post-processing prevent the model from predicting idle for everything.</p>
+            <p>85% idle frames → <strong>FocalLoss (γ=2.0)</strong> + class weights ≤10 + GroupNorm</p>
           </div>
         </div>
       </div>
@@ -395,15 +431,15 @@
       <div class="edge-grid fade-up">
         <div class="edge-card" style="border-color: rgba(239,68,68,0.2)">
           <h4><i data-lucide="x-circle"></i> LLMs Can't...</h4>
-          <p>Reliably count punch frequencies across 36 minutes of fight data. Maintain consistent thresholds between reports. Track <strong>107 metrics simultaneously</strong> without hallucination. Guarantee same input = same output.</p>
+          <p>Count across 36 min · Consistent thresholds · Track 107 metrics · <strong>Same input ≠ same output</strong></p>
         </div>
         <div class="edge-card" style="border-color: rgba(16,185,129,0.3)">
           <h4><i data-lucide="check-circle-2"></i> LLMs Can...</h4>
-          <p>Turn structured JSON findings into readable prose. Generate natural-language scouting narratives. Adapt report tone for different audiences. <strong>Optional prose layer only.</strong></p>
+          <p>JSON → readable prose · Adapt tone · Narrative reports · <strong>Optional layer only</strong></p>
         </div>
       </div>
-      <div class="gp-finding fade-up delay-1" style="max-width:700px; margin:28px auto 0; background:rgba(0,212,255,0.06); border-color:rgba(0,212,255,0.2)">
-        <p style="font-size:15px; color:var(--text-secondary)">If Claude API goes down, MotionGuru still produces <strong style="color:var(--accent)">every metric, every strategy, every finding</strong>. The scouting report just won't have prose.</p>
+      <div class="gp-finding fade-up delay-1" style="max-width:700px; margin:28px auto 0; background:rgba(31,221,135,0.06); border-color:rgba(31,221,135,0.2)">
+        <p style="font-size:15px; color:var(--text-secondary)">If Claude API goes down, MotionGuru still produces <strong style="color:var(--accent)">every metric, every strategy, every finding</strong>. The report just won't have prose.</p>
       </div>
     </div>
   </section>
@@ -418,28 +454,28 @@
           <div class="feature-icon"><i data-lucide="film"></i></div>
           <div>
             <h4>Automated Habit Clip Extraction</h4>
-            <p>Auto-extract "Top 5 Exploitable Habits" and "Top 5 Habits to Fix" reels — annotated with on-screen commentary explaining each pattern and the recommended counter.</p>
+            <p>Auto-generate <strong>"Top 5 Exploitable"</strong> and <strong>"Top 5 to Fix"</strong> reels with on-screen annotations</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="target"></i></div>
           <div>
-            <h4>Phase B: Granular Action Classification</h4>
-            <p>Expand from 3-class (idle/punch/defense) to 12+ action classes: jab, cross, hook, uppercut, body shot, feint, block, slip, duck, parry, clinch — <strong>unlocking ~40% of currently dormant profiler metrics.</strong></p>
+            <h4>Phase B: 12+ Action Classes</h4>
+            <p>jab · cross · hook · uppercut · body · feint · block · slip · duck · parry · clinch — <strong>unlocks ~40% dormant metrics</strong></p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="git-branch"></i></div>
           <div>
-            <h4>Architecture Evolution: ST-GCN → Transformer</h4>
-            <p>Upgrade from TCN to <strong>Spatial-Temporal Graph Convolution</strong> (skeleton-aware action recognition), then to a full <strong>Transformer</strong> architecture once the proprietary dataset reaches critical mass — enabling whole-round contextual reasoning.</p>
+            <h4>TCN → ST-GCN → Transformer</h4>
+            <p>Skeleton-graph reasoning → full <strong>whole-round contextual attention</strong> at dataset scale</p>
           </div>
         </div>
         <div class="feature-item">
           <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
           <div>
-            <h4>3D Pose &amp; Real-Time Mode</h4>
-            <p>Monocular 3D mesh recovery for true biomechanics and kinetic chain analysis. Live fight analysis during broadcasts with streaming inference.</p>
+            <h4>3D Pose & Real-Time</h4>
+            <p><strong>Monocular 3D mesh recovery</strong> + streaming inference for live broadcast analysis</p>
           </div>
         </div>
       </div>
@@ -514,13 +550,13 @@
   <!-- ========== SLIDE 17: CLOSE ========== -->
   <section class="slide slide-title" data-theme="gradient">
     <div class="slide-content center-content">
-      <div class="logo-mark"><i data-lucide="brain-cog"></i></div>
+      <div class="logo-mark"><img src="logo.png" alt="MotionGuru logo"></div>
       <h1 class="hero-title">Motion<span class="accent">Guru</span></h1>
       <p class="hero-subtitle">See what no one else can see.</p>
       <div class="divider"></div>
       <p class="close-tagline">The future of fight intelligence is computational.<br>And it's already running.</p>
       <div class="contact-block fade-up delay-1">
-        <p><strong>Hieu Nguyen</strong></p>
+        <p><strong>Nick Nguyen</strong></p>
         <p>hieu.n.ng4@gmail.com · https://github.com/BeMoTechs/MotionGuru</p>
       </div>
     </div>

@@ -5,16 +5,16 @@
 
 /* ---------- Design Tokens ---------- */
 :root {
-  --bg-dark: #0a0a0f;
-  --bg-card: #12121a;
-  --bg-card-hover: #1a1a28;
-  --accent: #00d4ff;
-  --accent-glow: rgba(0, 212, 255, 0.15);
-  --accent-2: #7c3aed;
-  --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
-  --text-primary: #f0f0f5;
-  --text-secondary: #8888a0;
-  --text-muted: #55556a;
+  --bg-dark: #060a08;
+  --bg-card: #0e1611;
+  --bg-card-hover: #16211a;
+  --accent: #1fdd87;
+  --accent-glow: rgba(31, 221, 135, 0.15);
+  --accent-2: #0bb89a;
+  --accent-gradient: linear-gradient(135deg, #1fdd87 0%, #0bb89a 100%);
+  --text-primary: #eef3ef;
+  --text-secondary: #8f9a90;
+  --text-muted: #59635b;
   --border: rgba(255, 255, 255, 0.06);
   --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -42,15 +42,15 @@ body { font-family: var(--font-body); background: var(--bg-dark); color: var(--t
 /* ---------- Backgrounds ---------- */
 .slide[data-theme="dark"]::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(31,221,135,0.05) 0%, transparent 60%);
 }
 .slide[data-theme="gradient"] {
-  background: linear-gradient(160deg, #0a0a0f 0%, #0d1117 40%, #111827 100%);
+  background: linear-gradient(160deg, #060a08 0%, #0a120d 40%, #0e1813 100%);
 }
 .slide[data-theme="gradient"]::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 50%, rgba(0,212,255,0.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(11,184,154,0.10) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, rgba(31,221,135,0.07) 0%, transparent 50%);
 }
 
 /* ---------- Navigation ---------- */
@@ -91,6 +91,7 @@ kbd {
 /* ---------- Title Slide ---------- */
 .logo-mark { margin-bottom: 16px; filter: drop-shadow(0 0 20px var(--accent-glow)); }
 .logo-mark svg, .logo-mark i { width: 56px; height: 56px; stroke: var(--accent); display: block; margin: 0 auto; }
+.logo-mark img { width: clamp(320px, 42vw, 528px); max-width: 100%; max-height: 52vh; height: auto; object-fit: contain; display: block; margin: 0 auto; }
 .hero-title { font-size: clamp(48px, 7vw, 88px); font-weight: 900; letter-spacing: -2px; line-height: 1; margin-bottom: 12px; }
 .hero-subtitle { font-size: clamp(18px, 2.2vw, 26px); font-weight: 300; color: var(--text-secondary); margin-bottom: 24px; }
 .hero-tagline { font-size: 18px; color: var(--text-secondary); max-width: 500px; line-height: 1.6; }
@@ -199,7 +200,7 @@ kbd {
 .gp-finding p { font-size: 15px; }
 .gp-arrow { text-align: center; font-size: 20px; color: var(--text-muted); margin: 8px 0; }
 .gp-strategy {
-  background: var(--bg-card); border: 1px solid rgba(0,212,255,0.2); border-radius: var(--radius);
+  background: var(--bg-card); border: 1px solid rgba(31,221,135,0.2); border-radius: var(--radius);
   padding: 24px;
 }
 .gp-strategy h4 { font-size: 17px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
@@ -236,7 +237,7 @@ kbd {
   display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px;
   padding: 2px 10px; border-radius: 4px; margin-top: 6px;
 }
-.roadmap-badge.now { background: rgba(0,212,255,0.15); color: var(--accent); }
+.roadmap-badge.now { background: rgba(31,221,135,0.15); color: var(--accent); }
 
 /* ---------- Tech Stack ---------- */
 .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
