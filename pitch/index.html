@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotionGuru — Product Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="MotionGuru — Automated boxing video analysis. From raw broadcast footage to actionable scouting reports using computer vision and deep learning.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation dots -->
+  <nav id="slide-nav"></nav>
+  <div id="slide-counter"></div>
+  <div id="progress-bar"></div>
+
+  <!-- ========== SLIDE 1: TITLE ========== -->
+  <section class="slide slide-title" data-theme="dark">
+    <div class="slide-content center-content">
+      <div class="logo-mark"><i data-lucide="brain-cog"></i></div>
+      <h1 class="hero-title">Motion<span class="accent">Guru</span></h1>
+      <p class="hero-subtitle">Superhuman Motion Analysis</p>
+      <div class="divider"></div>
+      <p class="hero-tagline">An end-to-end ML pipeline that sees what no human coach can.</p>
+      <div class="cta-hint">Press <kbd>→</kbd> or click to begin</div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 2: THE HOOK ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content center-content">
+      <p class="hook-question fade-up">What if you could narrow down <em>exactly</em><br>what a fighter will do next — before they do it?</p>
+      <div class="hook-stats fade-up delay-1">
+        <div class="stat-card">
+          <span class="stat-number">300<span class="stat-unit">ms</span></span>
+          <span class="stat-label">Micro-tells detected<br>before any action</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">107</span>
+          <span class="stat-label">Behavioral metrics<br>per fighter</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">15</span>
+          <span class="stat-label">Analytical dimensions<br>profiled</span>
+        </div>
+      </div>
+      <p class="hook-punchline fade-up delay-2">Human coaches watch fights.<br><strong>MotionGuru reads them.</strong></p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 3: THE PROBLEM ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">The Problem</h2>
+      <h3 class="slide-heading">Fight analysis today is <span class="accent">subjective</span></h3>
+      <div class="problem-grid fade-up">
+        <div class="problem-card">
+          <div class="problem-icon"><i data-lucide="users"></i></div>
+          <h4>Volatile</h4>
+          <p>Coaches watch footage and form <em>opinions and impressions</em>. Two coaches, same fight, different conclusions.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon"><i data-lucide="clock"></i></div>
+          <h4>Slow</h4>
+          <p>Hours of manual video review per opponent. A 12-round fight takes exponentially more time to scout properly and as thoroughly.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon"><i data-lucide="alert-triangle"></i></div>
+          <h4>Incomplete</h4>
+          <p>Human eyes miss sub-300ms biomechanical tells, fatigue decay slopes, and compound vulnerability patterns.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon"><i data-lucide="file-x"></i></div>
+          <h4>Unstructured</h4>
+          <p>Insights live in notebooks and verbal briefings. No data persistence, no consistent cross-fight trending.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 4: THE SOLUTION ========== -->
+  <section class="slide" data-theme="gradient">
+    <div class="slide-content center-content">
+      <h2 class="section-label">The Solution</h2>
+      <h3 class="slide-heading">Drop in a fight video.<br>Get a <span class="accent">complete scouting report.</span></h3>
+      <div class="solution-flow fade-up">
+        <div class="flow-step"><span class="flow-icon"><i data-lucide="video"></i></span><span>Raw Broadcast<br>Video</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span class="flow-icon"><i data-lucide="cpu"></i></span><span>Automated<br>ML Pipeline</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step active"><span class="flow-icon"><i data-lucide="clipboard-list"></i></span><span>Fighter Profile<br>+ Game Plan</span></div>
+      </div>
+      <p class="solution-note fade-up delay-1">Zero manual intervention. Fully deterministic. No LLM guesswork.</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 5: HOW IT WORKS ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">How It Works</h2>
+      <h3 class="slide-heading">6-stage autonomous pipeline</h3>
+      <div class="pipeline fade-up">
+        <div class="pipe-stage">
+          <div class="pipe-number">1</div>
+          <h4>Round Segmentation</h4>
+          <p>OCR reads broadcast timer → FFmpeg extracts rounds losslessly <em>(optional — best suited for full broadcast footage)</em></p>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-number">2</div>
+          <h4>Pose Extraction</h4>
+          <p>YOLO11m-pose + OSNet-x1.0 ReID + Hungarian + Kalman → 18 keypoints per fighter per frame</p>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-number">3</div>
+          <h4>Feature Engineering</h4>
+          <p>57 biomechanical features: kinetic chain, guard geometry, head dynamics, cross-fighter interaction</p>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-number">4</div>
+          <h4>Action Classification</h4>
+          <p>Bidirectional TCN + Temporal Attention → per-frame, per-fighter action labels</p>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-number">5</div>
+          <h4>Fighter Profiling</h4>
+          <p>107 metrics across 15 behavioral dimensions with confidence tagging</p>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-number">6</div>
+          <h4>Strategy Engine</h4>
+          <p>37 threshold rules × 93-strategy library → prioritized game plan + PDF report</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 6: SUPERHUMAN EDGE ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">The Superhuman Edge</h2>
+      <h3 class="slide-heading">What MotionGuru sees that <span class="accent">humans can't</span></h3>
+      <div class="edge-grid fade-up">
+        <div class="edge-card">
+          <h4><i data-lucide="scan"></i> Preparatory Tells</h4>
+          <p>Detects involuntary micro-movements — a lead-foot lift, an elbow flare, a shoulder dip — <strong>sub-300ms before the attack begins</strong>. Invisible at real-time speed.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="trending-down"></i> Fatigue Prediction</h4>
+          <p>Computes precise <strong>round-over-round decay slopes</strong>: guard height, punch return paths, combo lengths, flat-footed %. Projects <em>when</em> a fighter's structure will collapse.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="timer"></i> Rhythm Exploitation</h4>
+          <p>Maps inter-punch intervals at <strong>millisecond resolution</strong>. A metronomic rhythm is an exploitable pattern — the system finds it and maps the counter.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="share-2"></i> Compound Vulnerabilities</h4>
+          <p>Cross-references 107 metrics to find <strong>intersecting weaknesses</strong> — e.g., straight retreats + guard drops + declining reaction time = catastrophic pressure vulnerability.</p>
+        </div>
+      </div>
+      <p class="dim-note fade-up delay-1" style="margin-top:24px">And more — every dimension the system profiles is a potential edge no human analyst could compute in real time.</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 7: 15 DIMENSIONS ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">The Fighter Profile</h2>
+      <h3 class="slide-heading">15 dimensions. 107 metrics. <span class="accent">One complete picture.</span></h3>
+      <div class="dimensions-grid fade-up">
+        <div class="dim-pill off">Punch Selection</div>
+        <div class="dim-pill off">Combo Architecture</div>
+        <div class="dim-pill super">Preparatory Tells</div>
+        <div class="dim-pill super">Punch Biomechanics</div>
+        <div class="dim-pill def">Guard Habits</div>
+        <div class="dim-pill def">Defensive Actions</div>
+        <div class="dim-pill mov">Retreat Geometry</div>
+        <div class="dim-pill mov">Advance Patterns</div>
+        <div class="dim-pill str">Stance & Footwork</div>
+        <div class="dim-pill temp">Timing & Rhythm</div>
+        <div class="dim-pill beh">Pressure Response</div>
+        <div class="dim-pill beh">Clinch & Inside</div>
+        <div class="dim-pill super">Fatigue Decay</div>
+        <div class="dim-pill super">Psychological Tells</div>
+        <div class="dim-pill super">Kinematics & COM</div>
+      </div>
+      <div class="dim-legend fade-up delay-1">
+        <span class="legend-item"><span class="dot off"></span>Offensive</span>
+        <span class="legend-item"><span class="dot def"></span>Defensive</span>
+        <span class="legend-item"><span class="dot mov"></span>Movement</span>
+        <span class="legend-item"><span class="dot temp"></span>Temporal</span>
+        <span class="legend-item"><span class="dot beh"></span>Behavioral</span>
+        <span class="legend-item"><span class="dot super"></span>Superhuman</span>
+      </div>
+      <p class="dim-note fade-up delay-2">Every metric tagged with confidence level — the system knows what it knows, and what it doesn't.</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 8: FROM DATA TO GAME PLAN ========== -->
+  <section class="slide" data-theme="gradient">
+    <div class="slide-content center-content">
+      <h2 class="section-label">From Data to Game Plan</h2>
+      <h3 class="slide-heading">Three findings. One <span class="accent">compound exploit.</span></h3>
+      <div class="gameplan-demo fade-up">
+        <div class="gp-finding">
+          <span class="gp-badge critical">FINDING 1</span>
+          <p><strong>Guard drops &gt;15% after every combination</strong> — recovery takes 340ms on average</p>
+        </div>
+        <div class="gp-finding" style="border-color: rgba(251,191,36,0.3)">
+          <span class="gp-badge" style="background:rgba(251,191,36,0.15);color:#fbbf24">FINDING 2</span>
+          <p><strong>Retreats in straight lines under pressure</strong> — lateral movement drops 62% after Round 6</p>
+        </div>
+        <div class="gp-finding" style="border-color: rgba(168,85,247,0.3)">
+          <span class="gp-badge" style="background:rgba(168,85,247,0.15);color:#a855f7">FINDING 3</span>
+          <p><strong>Elbow flare detected 280ms before every cross</strong> — a telegraphed preparatory tell</p>
+        </div>
+        <div class="gp-arrow">↓ compound strategy</div>
+        <div class="gp-strategy">
+          <h4>Auto-Generated Game Plan: Pressure Trap</h4>
+          <p class="gp-technique"><strong>Round 7+:</strong> Bait the cross (you'll see the elbow flare 280ms early). Slip inside, let the combo finish — his guard is now at its lowest and he can only retreat straight back. Cut the ring, close distance, fire your counter before his 340ms recovery window closes.</p>
+          <p class="gp-reasoning"><strong>Why it works:</strong> Three independent weaknesses converge into a single high-percentage window. No human analyst cross-references this many variables in real time.</p>
+          <div class="gp-tags">
+            <span class="gp-tag">Confidence: 3 corroborating metrics</span>
+            <span class="gp-tag">Window: Late rounds (fatigue-amplified)</span>
+            <span class="gp-tag">Drill: Slip-counter + ring-cutting footwork</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 8.5: PHASE 0 — PREPROCESSING ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Phase 0</h2>
+      <h3 class="slide-heading">Preprocessing: from raw footage to <span class="accent">clean round data</span></h3>
+      <div class="edge-grid fade-up">
+        <div class="edge-card">
+          <h4><i data-lucide="scan-text"></i> OCR Timer Detection</h4>
+          <p>Automatically locates and reads the broadcast round timer using <strong>EasyOCR</strong>. Detects round start/end boundaries without any manual input — works across networks (ESPN, DAZN, Sky Sports).</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="scissors"></i> Intelligent Segmentation</h4>
+          <p>Identifies and discards <strong>replays, walk-outs, and between-round breaks</strong> by detecting scene transitions and timer absence. Only live-action frames enter the pipeline.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="hard-drive"></i> Lossless Round Extraction</h4>
+          <p>FFmpeg extracts each round as a separate video with <strong>zero re-encoding</strong> — preserving original resolution and bitrate. Metadata (round number, timestamps, FPS) logged to JSON.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="check-square"></i> Quality Validation</h4>
+          <p>Pre-flight checks verify resolution, frame rate consistency, and codec compatibility before the pipeline commits to processing. <strong>Fail-fast on corrupt or unsupported inputs.</strong></p>
+        </div>
+      </div>
+      <p class="dim-note fade-up delay-1">This stage is optional — the pipeline can also accept pre-segmented round clips directly.</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 9: POSE EXTRACTION DEEP DIVE ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Phase 1 Deep Dive</h2>
+      <h3 class="slide-heading">Pose Extraction: track every joint, <span class="accent">every frame</span></h3>
+      <div class="edge-grid fade-up">
+        <div class="edge-card">
+          <h4><i data-lucide="crosshair"></i> Smart Calibration</h4>
+          <p>2-phase system: fast 45s scan scores frames for quality (separation, bbox size, sharpness), then selects top-20 frames to build primary fighter templates. <strong>Close-up templates</strong> enriched separately at 30% blend weight.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="link-2"></i> Similarity Scoring</h4>
+          <p>Multi-signal identity: <strong>OSNet cosine + guard stance bonus + referee pose penalty × lateral zone confidence + shorts color + position bonus</strong>. Hungarian assignment for globally optimal pairing.</p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="shield"></i> Intersection-Aware</h4>
+          <p>When fighters clinch (bboxes within 12% of frame width): anchor threshold raised to 0.92, home zone EMA suppressed, Kalman recovery disabled. <strong>Prevents identity swaps during close-range exchanges.</strong></p>
+        </div>
+        <div class="edge-card">
+          <h4><i data-lucide="activity"></i> 1-Euro Smoothing</h4>
+          <p>Adaptive per-keypoint filtering with kinematic-group betas: <strong>wrists=1.5</strong> (fast punches), elbows=1.0, head=0.6, <strong>shoulders/hips=0.3</strong> (stable posture). NaN-safe; resets on camera cuts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 10: FEATURE EXTRACTION ========== -->
+  <section class="slide" data-theme="gradient">
+    <div class="slide-content">
+      <h2 class="section-label">Phase 2</h2>
+      <h3 class="slide-heading">57 biomechanical features <span class="accent">per frame</span></h3>
+      <div class="problem-grid fade-up">
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="zap"></i></div>
+          <h4>Speed & Power</h4>
+          <p>Wrist velocity, wrist acceleration, elbow extension rate — the kinematic signature of each punch.</p>
+        </div>
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="umbrella"></i></div>
+          <h4>Guard & Defense</h4>
+          <p>Guard openness (L/R/combined), wrist-to-nose distance, elbow tuck angle — defensive posture decoded.</p>
+        </div>
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="rotate-cw"></i></div>
+          <h4>Body Mechanics</h4>
+          <p>Shoulder rotation, hip rotation, torso lean angle, rotational velocities — the kinetic chain in numbers.</p>
+        </div>
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="move"></i></div>
+          <h4>Footwork</h4>
+          <p>Stance width, COM velocity, weight distribution — the foundation beneath every punch.</p>
+        </div>
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="git-merge"></i></div>
+          <h4>Cross-Fighter</h4>
+          <p>Shoulder distance, closing/separating rate, wrist-to-chin proximity — two fighters as one system.</p>
+        </div>
+        <div class="problem-card" style="border-color: rgba(0,212,255,0.2)">
+          <div class="problem-icon"><i data-lucide="check-circle"></i></div>
+          <h4>Data Quality</h4>
+          <p>Binary valid_frame indicator (never z-scored). Forward-fill for ≤3 frame gaps. NaN propagation for longer drops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 11: FIGHTERS PROFILED ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Dataset</h2>
+      <h3 class="slide-heading">14 elite fighters <span class="accent">profiled and validated</span></h3>
+      <div class="pipeline fade-up" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">1</div><h4>Canelo Álvarez</h4><p>Counter-puncher · Super Middle</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">2</div><h4>GGG</h4><p>Pressure fighter · Middleweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">3</div><h4>Tyson Fury</h4><p>Switch-hitter · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">4</div><h4>Oleksandr Usyk</h4><p>Technician · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">5</div><h4>Anthony Joshua</h4><p>Power puncher · Heavyweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">6</div><h4>Naoya Inoue</h4><p>Explosive finisher · Super Bantam</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">7</div><h4>Crawford</h4><p>Switch-hitter · Welterweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">8</div><h4>Dmitry Bivol</h4><p>Tactician · Light Heavy</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">9</div><h4>Jermell Charlo</h4><p>Counter-puncher · Super Middle</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">10</div><h4>Benavidez</h4><p>Volume puncher · Light Heavy</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">11</div><h4>Beterbiev</h4><p>Power pressure · Light Heavy</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">12</div><h4>Devin Haney</h4><p>Boxing technician · Super Light</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">13</div><h4>Shakur</h4><p>Defensive master · Lightweight</p></div>
+        <div class="pipe-stage" style="padding:16px; text-align:center"><div class="pipe-number">14</div><h4>Tank Davis</h4><p>KO artist · Lightweight</p></div>
+      </div>
+      <p class="dim-note fade-up delay-1" style="margin-top:24px">Multi-fight merging aggregates patterns across bouts — each processed fight makes the profile more reliable.</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 12: ENGINEERING CHALLENGES ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Engineering</h2>
+      <h3 class="slide-heading">Real-world boxing footage <span class="accent">breaks everything</span></h3>
+      <div class="features-list fade-up">
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="eye-off"></i></div>
+          <div>
+            <h4>Fighter Occlusion</h4>
+            <p>Clinches, referee blocking, and camera angles cause complete loss of visibility. Solved with <strong>Kalman filter prediction</strong> and intersection-aware tracking that raises identity thresholds during close-range exchanges.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="shuffle"></i></div>
+          <div>
+            <h4>Identity Tracking</h4>
+            <p>Broadcast cuts, replays, and similar-looking fighters cause ID swaps. <strong>OSNet-x1.0 ReID + multi-template calibration + Hungarian assignment + jump guard</strong> maintains identity across the full video.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="layers"></i></div>
+          <div>
+            <h4>2D → 3D Inference</h4>
+            <p>Single-camera 2D poses must approximate 3D biomechanics. <strong>Confidence tagging</strong> (direct / proxy_2d / requires_3d) flags every metric so downstream analysis knows what to trust.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="scale"></i></div>
+          <div>
+            <h4>Class Imbalance</h4>
+            <p>Fighters spend ~85% of rounds idle. <strong>FocalLoss (γ=2.0) with class weights clamped ≤10</strong>, GroupNorm, and careful post-processing prevent the model from predicting idle for everything.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 13: WHY DETERMINISTIC ========== -->
+  <section class="slide" data-theme="gradient">
+    <div class="slide-content">
+      <h2 class="section-label">Design Philosophy</h2>
+      <h3 class="slide-heading">Why <span class="accent">deterministic</span> beats LLM</h3>
+      <div class="edge-grid fade-up">
+        <div class="edge-card" style="border-color: rgba(239,68,68,0.2)">
+          <h4><i data-lucide="x-circle"></i> LLMs Can't...</h4>
+          <p>Reliably count punch frequencies across 36 minutes of fight data. Maintain consistent thresholds between reports. Track <strong>107 metrics simultaneously</strong> without hallucination. Guarantee same input = same output.</p>
+        </div>
+        <div class="edge-card" style="border-color: rgba(16,185,129,0.3)">
+          <h4><i data-lucide="check-circle-2"></i> LLMs Can...</h4>
+          <p>Turn structured JSON findings into readable prose. Generate natural-language scouting narratives. Adapt report tone for different audiences. <strong>Optional prose layer only.</strong></p>
+        </div>
+      </div>
+      <div class="gp-finding fade-up delay-1" style="max-width:700px; margin:28px auto 0; background:rgba(0,212,255,0.06); border-color:rgba(0,212,255,0.2)">
+        <p style="font-size:15px; color:var(--text-secondary)">If Claude API goes down, MotionGuru still produces <strong style="color:var(--accent)">every metric, every strategy, every finding</strong>. The scouting report just won't have prose.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 14: PLANNED FEATURES ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Coming Next</h2>
+      <h3 class="slide-heading">Features that turn data into <span class="accent">coaching tools</span></h3>
+      <div class="features-list fade-up">
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="film"></i></div>
+          <div>
+            <h4>Automated Habit Clip Extraction</h4>
+            <p>Auto-extract "Top 5 Exploitable Habits" and "Top 5 Habits to Fix" reels — annotated with on-screen commentary explaining each pattern and the recommended counter.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="target"></i></div>
+          <div>
+            <h4>Phase B: Granular Action Classification</h4>
+            <p>Expand from 3-class (idle/punch/defense) to 12+ action classes: jab, cross, hook, uppercut, body shot, feint, block, slip, duck, parry, clinch — <strong>unlocking ~40% of currently dormant profiler metrics.</strong></p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="git-branch"></i></div>
+          <div>
+            <h4>Architecture Evolution: ST-GCN → Transformer</h4>
+            <p>Upgrade from TCN to <strong>Spatial-Temporal Graph Convolution</strong> (skeleton-aware action recognition), then to a full <strong>Transformer</strong> architecture once the proprietary dataset reaches critical mass — enabling whole-round contextual reasoning.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
+          <div>
+            <h4>3D Pose &amp; Real-Time Mode</h4>
+            <p>Monocular 3D mesh recovery for true biomechanics and kinetic chain analysis. Live fight analysis during broadcasts with streaming inference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 15: SCALABILITY ROADMAP ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">The Vision</h2>
+      <h3 class="slide-heading">Built for boxing. <span class="accent">Designed for every sport.</span></h3>
+      <div class="roadmap fade-up">
+        <div class="roadmap-stage current">
+          <div class="roadmap-marker"></div>
+          <h4>Boxing</h4>
+          <p>Proof of concept with the deepest domain model. Production pipeline running.</p>
+          <span class="roadmap-badge now">Now</span>
+        </div>
+        <div class="roadmap-stage">
+          <div class="roadmap-marker"></div>
+          <h4>All Combat Sports</h4>
+          <p>MMA, kickboxing, Muay Thai, wrestling. Same tracking — swap features & strategy library.</p>
+        </div>
+        <div class="roadmap-stage">
+          <div class="roadmap-marker"></div>
+          <h4>Individual Sports</h4>
+          <p>Tennis, fencing, golf. One-vs-one or solo athlete analysis via the same profiler pipeline.</p>
+        </div>
+        <div class="roadmap-stage">
+          <div class="roadmap-marker"></div>
+          <h4>All Broadcast Sports</h4>
+          <p>Any sport where biomechanical patterns drive tactical advantage. New sport = new feature layer + strategy library.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 16: TECH STACK ========== -->
+  <section class="slide" data-theme="dark">
+    <div class="slide-content">
+      <h2 class="section-label">Under The Hood</h2>
+      <h3 class="slide-heading">Technology stack</h3>
+      <div class="stack-grid fade-up">
+        <div class="stack-card">
+          <h4>Core</h4>
+          <p>Python 3 · PyTorch · NumPy / SciPy</p>
+        </div>
+        <div class="stack-card">
+          <h4>Computer Vision</h4>
+          <p>YOLO11m-pose · OSNet-x1.0 (torchreid) · EasyOCR · OpenCV</p>
+        </div>
+        <div class="stack-card">
+          <h4>Deep Learning</h4>
+          <p>Bidirectional TCN · Temporal Self-Attention · FocalLoss · GroupNorm</p>
+        </div>
+        <div class="stack-card">
+          <h4>Processing</h4>
+          <p>FFmpeg (stream-copy) · fpdf2 (PDF reports) · yt-dlp (acquisition)</p>
+        </div>
+        <div class="stack-card">
+          <h4>Infrastructure</h4>
+          <p>AWS EC2 (GPU training) · Local Windows (inference)</p>
+        </div>
+        <div class="stack-card">
+          <h4>Optional</h4>
+          <p>Claude API (prose generation only — pipeline works without it)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 17: CLOSE ========== -->
+  <section class="slide slide-title" data-theme="gradient">
+    <div class="slide-content center-content">
+      <div class="logo-mark"><i data-lucide="brain-cog"></i></div>
+      <h1 class="hero-title">Motion<span class="accent">Guru</span></h1>
+      <p class="hero-subtitle">See what no one else can see.</p>
+      <div class="divider"></div>
+      <p class="close-tagline">The future of fight intelligence is computational.<br>And it's already running.</p>
+      <div class="contact-block fade-up delay-1">
+        <p><strong>Hieu Nguyen</strong></p>
+        <p>hieu.n.ng4@gmail.com · https://github.com/BeMoTechs/MotionGuru</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
